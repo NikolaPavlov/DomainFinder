@@ -17,7 +17,8 @@ input_file = 'input.txt'
 
 def domain_names_loader(filename):
     with open(filename, 'r'):
-        lines = [line.rstrip('\n') for line in open(filename)]
+        # lines = [line.rstrip('\n') for line in open(filename)]
+        lines = [line.strip() for line in open(filename) if line.strip()]
         return lines
 
 
@@ -25,7 +26,7 @@ def find_domain_registrar(domain_name):
     try:
         return whois(domain)['registrar']
     except:
-        return bcolors.OKGREEN + 'Available!'
+        return bcolors.OKGREEN + 'Available!' + bcolors.ENDC
 
 
 if __name__ == '__main__':
