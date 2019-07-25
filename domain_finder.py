@@ -21,6 +21,23 @@ def domain_names_loader(filename):
         lines = [line.strip() for line in open(filename) if line.strip()]
         return lines
 
+def domain_names_loader_unmarked(lines):
+    '''
+    remove domains which started with # + -
+    they are marked in the input.txt for reference
+    '''
+    stripped_lines = []
+    for line in lines:
+        if line[0] is '#':
+            pass
+        elif line[0] is '+':
+            pass
+        elif line[0] is '-':
+            pass
+        else:
+            stripped_lines.append(line)
+    return stripped_lines
+
 
 def find_domain_registrar(domain_name):
     try:
@@ -31,6 +48,7 @@ def find_domain_registrar(domain_name):
 
 if __name__ == '__main__':
     input_domains = domain_names_loader(input_file)
+    domains = domain_names_loader_unmarked(input_domains)
 
-    for domain in input_domains:
+    for domain in domains:
         print(domain + ' ---> ' + find_domain_registrar(domain))
