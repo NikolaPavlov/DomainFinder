@@ -21,6 +21,7 @@ def domain_names_loader(filename):
         lines = [line.strip() for line in open(filename) if line.strip()]
         return lines
 
+
 def domain_names_loader_unmarked(lines):
     '''
     remove domains which started with # + -
@@ -28,11 +29,11 @@ def domain_names_loader_unmarked(lines):
     '''
     stripped_lines = []
     for line in lines:
-        if line[0] is '#':
+        if line[0] == '#':
             pass
-        elif line[0] is '+':
+        elif line[0] == '+':
             pass
-        elif line[0] is '-':
+        elif line[0] == '-':
             pass
         else:
             stripped_lines.append(line)
